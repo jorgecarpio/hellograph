@@ -35,10 +35,69 @@ CGFloat const CPDBarInitialX = 0.25f;
     [self configureAxes];
 }
 
--(void)configureGraph {
+/* Where graph magic happens */
+-(void)configureGraph
+{
+    // Create the graph
+    CPTGraph *graph = [[CPTXYGraph alloc] initWithFrame:[[self hostView] bounds]];
+    graph.plotAreaFrame.masksToBorder = NO;
+    self.hostView.hostedGraph = graph;
+    
+    // Configure the graph
+    [graph applyTheme:[CPTTheme themeNamed:kCPTPlainWhiteTheme]];
+    graph.paddingBottom = 30.0f;
+    graph.paddingLeft  = 30.0f;
+    graph.paddingTop    = -1.0f;
+    graph.paddingRight  = -5.0f;
+    
+    // Styling
+    CPTMutableTextStyle *titleStyle = [CPTMutableTextStyle textStyle];
+    [titleStyle setColor:[CPTColor grayColor]];
+    [titleStyle setFontName:@"Helvetica-Bold"];
+    [titleStyle setFontSize:16.0f];
+    
+    // Set up title
+    NSString *title = @"a bar graph";
+    [graph setTitle:title];
+    [graph setTitleTextStyle:titleStyle];
+    [graph setTitlePlotAreaFrameAnchor:CPTRectAnchorTop];
+    [graph setTitleDisplacement:CGPointMake(0.0f, -16.0f)];
+    
+    
+    // Set up plot space
+    CGFloat xMin = 0.0f;
+    CGFloat xMax = [[[CPDStockPriceStore sharedInstance] datesInWeek] count];
+    CGFloat yMin = 0.0f;
+    CGFloat yMax = 800.0f;  // should determine dynamically based on max price
+    CPTXYPlotSpace *plotSpace = (CPTXYPlotSpace *) graph.defaultPlotSpace;
+    plotSpace.xRange = [CPTPlotRange plotRangeWithLocation:CPTDecimalFromFloat(xMin) length:CPTDecimalFromFloat(xMax)];
+    plotSpace.yRange = [CPTPlotRange plotRangeWithLocation:CPTDecimalFromFloat(yMin) length:CPTDecimalFromFloat(yMax)];
 }
 
--(void)configurePlots {
+/* Add a plot to my graph */
+-(void)configurePlots
+{
+    [self setMyPlot:[CPTBarPlot tubularBarPlotWithColor:[CPTColor redColor] horizontalBars:NO]];
+    [[self myPlot] setIdentifier:@"id"];
+    
+    // Set up line style
+    CPTMutableLineStyle *barLineStyle = [[CPTMutableLineStyle alloc] init];
+    [barLineStyle setLineColor:[CPTColor lightGrayColor]];
+    [barLineStyle setLineWidth:0.5];
+    
+    // Add plot to graph
+    CPTGraph *graph = [[self hostView] hostedGraph];
+    CGFloat barX = CPDBarInitialX;
+    NSArray *plots = [NSArray arrayWithObject:[self myPlot]];
+    for (CPTBarPlot *plot in plots) {
+        plot.dataSource = self;
+        plot.delegate = self;
+        plot.barWidth = CPTDecimalFromDouble(CPDBarWidth);
+        plot.barOffset = CPTDecimalFromDouble(barX);
+        plot.lineStyle = barLineStyle;
+        [graph addPlot:plot toPlotSpace:graph.defaultPlotSpace];
+        barX += CPDBarWidth;
+    }
 }
 
 -(void)configureAxes {
@@ -58,10 +117,14 @@ CGFloat const CPDBarInitialX = 0.25f;
 /* Required Core Plot methods per protocol */
 #pragma mark - CPTPlotDataSource methods
 -(NSUInteger)numberOfRecordsForPlot:(CPTPlot *)plot {
-    return 0;
-}
+    return [[[CPDStockPriceStore sharedInstance] datesInWeek] count];}
 
 -(NSNumber *)numberForPlot:(CPTPlot *)plot field:(NSUInteger)fieldEnum recordIndex:(NSUInteger)index {
+    if ((fieldEnum == CPTBarPlotFieldBarTip) && (index < [[[CPDStockPriceStore sharedInstance] datesInWeek] count])) {
+        if ([plot.identifier isEqual:@"id"]) {
+            return [[[CPDStockPriceStore sharedInstance] weeklyPrices:CPDTickerSymbolAAPL] objectAtIndex:index];
+        } 
+    }
     return [NSDecimalNumber numberWithUnsignedInteger:index];
 }
 
