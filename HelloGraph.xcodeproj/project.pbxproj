@@ -22,6 +22,7 @@
 		A2CD9B6817A0D16F00B9D347 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A2CD9B6717A0D16F00B9D347 /* QuartzCore.framework */; };
 		A2CD9B7017A0D41700B9D347 /* CPDConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = A2CD9B6D17A0D41700B9D347 /* CPDConstants.m */; };
 		A2CD9B7117A0D41700B9D347 /* CPDStockPriceStore.m in Sources */ = {isa = PBXBuildFile; fileRef = A2CD9B6F17A0D41700B9D347 /* CPDStockPriceStore.m */; };
+		A2CD9B7317A0F9C100B9D347 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = A2CD9B7217A0F9C100B9D347 /* Default.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -124,6 +125,7 @@
 		A2CD9B6D17A0D41700B9D347 /* CPDConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CPDConstants.m; sourceTree = "<group>"; };
 		A2CD9B6E17A0D41700B9D347 /* CPDStockPriceStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPDStockPriceStore.h; sourceTree = "<group>"; };
 		A2CD9B6F17A0D41700B9D347 /* CPDStockPriceStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CPDStockPriceStore.m; sourceTree = "<group>"; };
+		A2CD9B7217A0F9C100B9D347 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -145,6 +147,7 @@
 		A2CD9AE817A0CE8000B9D347 = {
 			isa = PBXGroup;
 			children = (
+				A2CD9B7217A0F9C100B9D347 /* Default.png */,
 				A2CD9B6A17A0D3E000B9D347 /* CorePlot */,
 				A2CD9AFA17A0CE8100B9D347 /* HelloGraph */,
 				A2CD9AF317A0CE8000B9D347 /* Frameworks */,
@@ -361,6 +364,7 @@
 				A2CD9B0917A0CE8100B9D347 /* Default@2x.png in Resources */,
 				A2CD9B0B17A0CE8100B9D347 /* Default-568h@2x.png in Resources */,
 				A2CD9B0E17A0CE8100B9D347 /* MainStoryboard.storyboard in Resources */,
+				A2CD9B7317A0F9C100B9D347 /* Default.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
