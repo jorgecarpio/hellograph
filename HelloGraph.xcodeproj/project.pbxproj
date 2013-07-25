@@ -20,6 +20,8 @@
 		A2CD9B1117A0CE8100B9D347 /* HelloGraphViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A2CD9B1017A0CE8100B9D347 /* HelloGraphViewController.m */; };
 		A2CD9B6617A0D13900B9D347 /* libCorePlot-CocoaTouch.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A2CD9B6517A0D13900B9D347 /* libCorePlot-CocoaTouch.a */; };
 		A2CD9B6817A0D16F00B9D347 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A2CD9B6717A0D16F00B9D347 /* QuartzCore.framework */; };
+		A2CD9B7017A0D41700B9D347 /* CPDConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = A2CD9B6D17A0D41700B9D347 /* CPDConstants.m */; };
+		A2CD9B7117A0D41700B9D347 /* CPDStockPriceStore.m in Sources */ = {isa = PBXBuildFile; fileRef = A2CD9B6F17A0D41700B9D347 /* CPDStockPriceStore.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -118,6 +120,10 @@
 		A2CD9B6417A0D09900B9D347 /* NSNumberExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSNumberExtensions.h; sourceTree = "<group>"; };
 		A2CD9B6517A0D13900B9D347 /* libCorePlot-CocoaTouch.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "libCorePlot-CocoaTouch.a"; sourceTree = "<group>"; };
 		A2CD9B6717A0D16F00B9D347 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		A2CD9B6C17A0D41700B9D347 /* CPDConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPDConstants.h; sourceTree = "<group>"; };
+		A2CD9B6D17A0D41700B9D347 /* CPDConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CPDConstants.m; sourceTree = "<group>"; };
+		A2CD9B6E17A0D41700B9D347 /* CPDStockPriceStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPDStockPriceStore.h; sourceTree = "<group>"; };
+		A2CD9B6F17A0D41700B9D347 /* CPDStockPriceStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CPDStockPriceStore.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -139,8 +145,7 @@
 		A2CD9AE817A0CE8000B9D347 = {
 			isa = PBXGroup;
 			children = (
-				A2CD9B6717A0D16F00B9D347 /* QuartzCore.framework */,
-				A2CD9B6517A0D13900B9D347 /* libCorePlot-CocoaTouch.a */,
+				A2CD9B6A17A0D3E000B9D347 /* CorePlot */,
 				A2CD9AFA17A0CE8100B9D347 /* HelloGraph */,
 				A2CD9AF317A0CE8000B9D347 /* Frameworks */,
 				A2CD9AF217A0CE8000B9D347 /* Products */,
@@ -158,6 +163,7 @@
 		A2CD9AF317A0CE8000B9D347 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				A2CD9B6717A0D16F00B9D347 /* QuartzCore.framework */,
 				A2CD9AF417A0CE8000B9D347 /* UIKit.framework */,
 				A2CD9AF617A0CE8100B9D347 /* Foundation.framework */,
 				A2CD9AF817A0CE8100B9D347 /* CoreGraphics.framework */,
@@ -168,7 +174,6 @@
 		A2CD9AFA17A0CE8100B9D347 /* HelloGraph */ = {
 			isa = PBXGroup;
 			children = (
-				A2CD9B1717A0D09900B9D347 /* CorePlotHeaders */,
 				A2CD9B0317A0CE8100B9D347 /* HelloGraphAppDelegate.h */,
 				A2CD9B0417A0CE8100B9D347 /* HelloGraphAppDelegate.m */,
 				A2CD9B0C17A0CE8100B9D347 /* MainStoryboard.storyboard */,
@@ -274,7 +279,29 @@
 				A2CD9B6317A0D09900B9D347 /* NSDecimalNumberExtensions.h */,
 				A2CD9B6417A0D09900B9D347 /* NSNumberExtensions.h */,
 			);
-			path = CorePlotHeaders;
+			name = CorePlotHeaders;
+			path = HelloGraph/CorePlotHeaders;
+			sourceTree = "<group>";
+		};
+		A2CD9B6A17A0D3E000B9D347 /* CorePlot */ = {
+			isa = PBXGroup;
+			children = (
+				A2CD9B6B17A0D41700B9D347 /* Starter Files */,
+				A2CD9B6517A0D13900B9D347 /* libCorePlot-CocoaTouch.a */,
+				A2CD9B1717A0D09900B9D347 /* CorePlotHeaders */,
+			);
+			name = CorePlot;
+			sourceTree = "<group>";
+		};
+		A2CD9B6B17A0D41700B9D347 /* Starter Files */ = {
+			isa = PBXGroup;
+			children = (
+				A2CD9B6C17A0D41700B9D347 /* CPDConstants.h */,
+				A2CD9B6D17A0D41700B9D347 /* CPDConstants.m */,
+				A2CD9B6E17A0D41700B9D347 /* CPDStockPriceStore.h */,
+				A2CD9B6F17A0D41700B9D347 /* CPDStockPriceStore.m */,
+			);
+			path = "Starter Files";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -347,6 +374,8 @@
 				A2CD9B0117A0CE8100B9D347 /* main.m in Sources */,
 				A2CD9B0517A0CE8100B9D347 /* HelloGraphAppDelegate.m in Sources */,
 				A2CD9B1117A0CE8100B9D347 /* HelloGraphViewController.m in Sources */,
+				A2CD9B7017A0D41700B9D347 /* CPDConstants.m in Sources */,
+				A2CD9B7117A0D41700B9D347 /* CPDStockPriceStore.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
