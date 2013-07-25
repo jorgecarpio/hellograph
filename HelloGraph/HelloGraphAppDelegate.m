@@ -5,6 +5,7 @@
 //  Created by Jorge Carpio on 7/24/13.
 //  Copyright (c) 2013 Jorge Carpio. All rights reserved.
 //
+//  A test of the Core Plot library
 
 #import "HelloGraphAppDelegate.h"
 
