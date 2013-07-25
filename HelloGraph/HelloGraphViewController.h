@@ -8,6 +8,16 @@
 
 #import <UIKit/UIKit.h>
 
-@interface HelloGraphViewController : UIViewController
+@interface HelloGraphViewController : UIViewController <CPTBarPlotDataSource, CPTBarPlotDelegate>
+
+@property (strong, nonatomic) IBOutlet CPTGraphHostingView *hostView;
+
+@property (nonatomic, strong) CPTBarPlot *myPlot;
+
+-(void)initPlot;
+-(void)configureGraph;
+-(void)configurePlots;
+-(void)configureAxes;
+-(void)hideAnnotation:(CPTGraph *)graph;
 
 @end
